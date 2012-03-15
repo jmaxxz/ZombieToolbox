@@ -7,9 +7,9 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTitle("CoreExtensions")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Jmaxxz")]
+[assembly: AssemblyCompany("Undead-Coders")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Jmaxxz")]
+[assembly: AssemblyCopyright("Undead-Coders")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
