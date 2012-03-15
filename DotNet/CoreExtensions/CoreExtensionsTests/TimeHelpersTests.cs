@@ -15,6 +15,27 @@ namespace CoreExtensionsTests
         }
 
         [Test]
+        public void Hours_Count_To_Timespan()
+        {
+            TimeSpan t = 9.Hours();
+            Assert.AreEqual(t.TotalHours, 9);
+        }
+
+        [Test]
+        public void Seconds_Count_To_Timespan()
+        {
+            TimeSpan t = 120.Seconds();
+            Assert.AreEqual(t.TotalSeconds, 120);
+        }
+
+        [Test]
+        public void Minutes_Count_To_Timespan()
+        {
+            TimeSpan t = 9.Minutes();
+            Assert.AreEqual(t.TotalMinutes, 9);
+        }
+
+        [Test]
         public void Time_Ago_test()
         {
             var date = TimeSpan.FromDays(10).Ago();
