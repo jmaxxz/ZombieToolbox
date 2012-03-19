@@ -35,7 +35,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="LinqHelpers.cs" />
-    <Compile Include="TimeHelpers.cs" />
+    <Compile Include="FluentTimeHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
