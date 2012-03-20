@@ -5,10 +5,10 @@ using ZombieToolbox.System;
 
 namespace CoreExtensionsTests
 {
-    [TestFixture()]
+    [TestFixture]
     public class LinqHelpersTests
     {
-        [Test()]
+        [Test]
         public void Covert_5_To_Enumerable()
         {
             var x = 5.Enumerable();
@@ -16,7 +16,7 @@ namespace CoreExtensionsTests
             Assert.AreEqual(x.Single(), 5);
         }
 
-        [Test()]
+        [Test]
         public void Covert_Null_To_Enumerable()
         {
             object src = null;

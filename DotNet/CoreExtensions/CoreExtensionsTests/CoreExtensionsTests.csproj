@@ -38,7 +38,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LinqHelpersTests.cs" />
-    <Compile Include="TimeHelpersTests.cs" />
+    <Compile Include="FluentTimeHelpersTests.cs" />
+    <Compile Include="Console2\ConsoleShorthandTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -46,5 +47,8 @@
       <Project>{0EBF206C-5DEC-4046-9AF7-9F2BE15FB8A8}</Project>
       <Name>CoreExtensions</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Console2\" />
   </ItemGroup>
 </Project>
