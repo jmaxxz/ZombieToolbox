@@ -37,6 +37,7 @@
     <Compile Include="LinqHelpers.cs" />
     <Compile Include="FluentTimeHelpers.cs" />
     <Compile Include="Console2\ConsoleShorthand.cs" />
+    <Compile Include="ObjectHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

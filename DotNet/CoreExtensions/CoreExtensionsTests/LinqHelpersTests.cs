@@ -24,6 +24,63 @@ namespace CoreExtensionsTests
 
             Assert.AreEqual(x.Count(), 0);
         }
+
+        [Test]
+        public void MatchesAny_PositiveTest()
+        {
+            Predicate<string>[] predicates = new Predicate<string>[]
+            {
+                x=>x=="foo",
+                x=>x.Length ==30,
+            };
+
+            var matchesAny = predicates.MatchesAny();
+
+            Assert.IsTrue(matchesAny("foo"));
+
+        }
+
+        [Test]
+        public void MatchesAny_NegativeTest()
+        {
+            Predicate<string>[] predicates = new Predicate<string>[]
+            {
+                x=>x=="fool",
+                x=>x.Length ==30,
+            };
+
+            var matchesAny = predicates.MatchesAny();
+
+            Assert.IsFalse(matchesAny("foo"));
+        }
+
+        [Test]
+        public void MatchesAll_PositiveTest()
+        {
+            Predicate<string>[] predicates = new Predicate<string>[]
+            {
+                x=>x=="foo",
+                x=>x.Length ==3,
+            };
+
+            var matchesAll = predicates.MatchesAll();
+
+            Assert.IsTrue(matchesAll("foo"));
+
+        }
+
+        public void MatchesAll_NegativeTest()
+        {
+            Predicate<string>[] predicates = new Predicate<string>[]
+            {
+                x=>x=="foo",
+                x=>x.Length ==4,
+            };
+
+            var matchesAll = predicates.MatchesAll();
+
+            Assert.IsFalse(matchesAll("foo"));
+        }
     }
 }
 

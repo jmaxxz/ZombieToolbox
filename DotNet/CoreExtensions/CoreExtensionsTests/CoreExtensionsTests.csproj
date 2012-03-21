@@ -40,6 +40,7 @@
     <Compile Include="LinqHelpersTests.cs" />
     <Compile Include="FluentTimeHelpersTests.cs" />
     <Compile Include="Console2\ConsoleShorthandTests.cs" />
+    <Compile Include="ObjectHelpersTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

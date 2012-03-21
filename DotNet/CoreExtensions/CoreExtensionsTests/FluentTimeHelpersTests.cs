@@ -36,7 +36,7 @@ namespace CoreExtensionsTests
         }
 
         [Test]
-        public void Time_Ago_test()
+        public void Time_Ago_Test()
         {
             var date = TimeSpan.FromDays(10).Ago();
 
@@ -45,7 +45,7 @@ namespace CoreExtensionsTests
         }
 
         [Test]
-        public void Time_AgoUtc_test()
+        public void Time_AgoUtc_Test()
         {
             var date = TimeSpan.FromDays(15).UtcAgo();
 

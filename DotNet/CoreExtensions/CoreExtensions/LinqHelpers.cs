@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace ZombieToolbox.System
@@ -24,6 +25,44 @@ namespace ZombieToolbox.System
             {
                 yield return val;
             }
+        }
+
+        /// <summary>
+        /// Converts an enumeration of predicates to a single predicate which indicates
+        /// if any of the predicates in the orginal enumeration evaluates to true.
+        /// </summary>
+        /// <returns>
+        /// A single predicate which indicates if any of the predicates in the orginal
+        /// enumeration evaluates to true.
+        /// </returns>
+        /// <param name='predicates'>
+        /// An enumeration of predicates.
+        /// </param>
+        /// <typeparam name='T'>
+        /// The type on which each of <see cref="predicates"/> act.
+        /// </typeparam>
+        public static Predicate<T> MatchesAny<T>(this IEnumerable<Predicate<T>> predicates)
+        {
+            return y=>predicates.Any(x=>x(y));
+        }
+
+        /// <summary>
+        /// Converts an enumeration of predicates to a single predicate which indicates
+        /// if all of the predicates in the orginal enumeration evaluates to true.
+        /// </summary>
+        /// <returns>
+        /// A single predicate which indicates if all of the predicates in the orginal
+        /// enumeration evaluates to true.
+        /// </returns>
+        /// <param name='predicates'>
+        /// An enumeration of predicates.
+        /// </param>
+        /// <typeparam name='T'>
+        /// The type on which each of <see cref="predicates"/> act.
+        /// </typeparam>
+        public static Predicate<T> MatchesAll<T>(this IEnumerable<Predicate<T>> predicates)
+        {
+            return y=>predicates.All(x=>x(y));
         }
     }
 }
