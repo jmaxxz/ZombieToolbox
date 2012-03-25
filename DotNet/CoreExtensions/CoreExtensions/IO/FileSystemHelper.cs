@@ -19,49 +19,41 @@ namespace ZombieToolbox.System
 
         public void HandlePath(string path)
         {
-            try
-            {
-                if(File.Exists(path))
-                {
-                    _fileHandler(new FileInfo(path));
-                }
-                else if(Directory.Exists(path))
-                {
-                    _directoryHandler(new DirectoryInfo(path));
-                }
-            }
-            catch(Exception e)
-            {
-                _errorHandler(e);
-            }
+            HandlePath(path, _fileHandler, _directoryHandler,_errorHandler );
         }
 
         public void HandlePathRecursively(string path)
         {
+            HandlePath(path, _fileHandler, RecursiveDirectoryHandler(),_errorHandler );
+        }
+        private static void HandlePath(string path, Action<FileInfo> fileHandler,Action<DirectoryInfo> directoryHandler, Action<Exception> errorHandler)
+        {
             try
             {
                 if(File.Exists(path))
                 {
-                    _fileHandler(new FileInfo(path));
+                    fileHandler(new FileInfo(path));
                 }
                 else if(Directory.Exists(path))
                 {
                     var d =new DirectoryInfo(path);
-                    RecursiveDirectoryHandler(_directoryHandler)(d);
+                    directoryHandler(d);
                 }
             }
             catch(Exception e)
             {
-                _errorHandler(e);
+                errorHandler(e);
             }
         }
-        private static Action<DirectoryInfo> RecursiveDirectoryHandler(Action<DirectoryInfo> d)
+
+        private Action<DirectoryInfo> RecursiveDirectoryHandler()
         {
+            return (d)=>{
             _directoryHandler(d);
             foreach(var f in d.GetFileSystemInfos())
             {
                 HandlePath(f.FullName);
-            }
+            }};
         }
     }
 }
