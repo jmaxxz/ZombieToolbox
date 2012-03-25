@@ -47,11 +47,7 @@ namespace ZombieToolbox.System
                 else if(Directory.Exists(path))
                 {
                     var d =new DirectoryInfo(path);
-                    _directoryHandler(d);
-                    foreach(var f in d.GetFileSystemInfos())
-                    {
-                        HandlePath(f.FullName);
-                    }
+                    RecursiveDirectoryHandler(_directoryHandler)(d);
                 }
             }
             catch(Exception e)
@@ -59,7 +55,14 @@ namespace ZombieToolbox.System
                 _errorHandler(e);
             }
         }
-
+        private static Action<DirectoryInfo> RecursiveDirectoryHandler(Action<DirectoryInfo> d)
+        {
+            _directoryHandler(d);
+            foreach(var f in d.GetFileSystemInfos())
+            {
+                HandlePath(f.FullName);
+            }
+        }
     }
 }
 
