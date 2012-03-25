@@ -38,6 +38,7 @@
     <Compile Include="FluentTimeHelpers.cs" />
     <Compile Include="Console2\ConsoleShorthand.cs" />
     <Compile Include="ObjectHelpers.cs" />
+    <Compile Include="IO\FileSystemHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -53,5 +54,6 @@
   </ProjectExtensions>
   <ItemGroup>
     <Folder Include="Console2\" />
+    <Folder Include="IO\" />
   </ItemGroup>
 </Project>
