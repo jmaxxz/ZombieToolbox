@@ -8,8 +8,8 @@ namespace ZombieToolbox.System
     {
         private readonly Action<FileInfo> _fileHandler;
         private readonly Action<DirectoryInfo> _directoryHandler;
-        private readonly Action<Exception> _errorHandler;
-        public FileSystemHelper (Action<FileInfo> fileHandler, Action<DirectoryInfo> directoryHandler, Action<Exception> errorHandler)
+        private readonly Action<FileSystemError> _errorHandler;
+        public FileSystemHelper (Action<FileInfo> fileHandler, Action<DirectoryInfo> directoryHandler, Action<FileSystemError> errorHandler)
         {
             _fileHandler = fileHandler;
             _directoryHandler = directoryHandler;
@@ -26,7 +26,7 @@ namespace ZombieToolbox.System
         {
             HandlePath(path, _fileHandler, RecursiveDirectoryHandler(),_errorHandler );
         }
-        private static void HandlePath(string path, Action<FileInfo> fileHandler,Action<DirectoryInfo> directoryHandler, Action<Exception> errorHandler)
+        private static void HandlePath(string path, Action<FileInfo> fileHandler,Action<DirectoryInfo> directoryHandler, Action<FileSystemError> errorHandler)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace ZombieToolbox.System
             }
             catch(Exception e)
             {
-                errorHandler(e);
+                errorHandler(new FileSystemError(path, e));
             }
         }
 
@@ -54,6 +54,17 @@ namespace ZombieToolbox.System
             {
                 HandlePath(f.FullName);
             }};
+        }
+    }
+    public class FileSystemError
+    {
+        public string Path {get; private set;}
+        public Exception Error {get; private set;}
+
+        public FileSystemError(string path, Exception error)
+        {
+            Path = path;
+            Error = error;
         }
     }
 }
